@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var path = require('path'),
+    fs = require('fs'),
+    sys = require('util'),
+    os = require('os'),
+    mkdirp;
+
+var deps = require('./deps.js');
+var args = process.argv.slice(1);
+
+var path = process.argv[2];
+var basePath = process.argv[3];
+
+var tree = deps.getTree(path, basePath);
+
+
+//console.log(path);
+console.log(JSON.stringify(tree));
+
+
+var files = deps.treeToList(tree);
+
+console.log(files);
+
